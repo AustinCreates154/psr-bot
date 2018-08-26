@@ -1,4 +1,4 @@
-module.exports.run = (bot, message, args, discord) => {
+module.exports.run = (client, message, args, discord) => {
   let em = new Discord.RichEmbed()
   .setTitle("Bot Version")
   .setDescrption("Hello there!")
