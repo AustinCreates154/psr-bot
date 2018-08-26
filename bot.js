@@ -1,5 +1,5 @@
 const discord = require('discord.js'),
-bot = new discord.Client(),
+const client = new discord.Client(),
 config = require('./config.json'),
 prefix = ".",
 
