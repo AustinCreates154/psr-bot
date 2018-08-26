@@ -21,9 +21,9 @@ require('fs').readdir("./commands/", (err, files) => {
 client.on('guildMemberAdd', (member) => require('./events/guildMemberAdd.js')(client, member))
 
 client.on('ready', () => {
-  var statuses = ["over Himiachi Base", "bot moosic", "bot gamez"]
+  var statuses = ["bot moosic", "bot gamez"]
   var result = statuses[Math.floor(Math.random() * statuses.length)]
-  client.user.setActivity(`Loading Himiachi...`, {type: "STREAMING", url: "https://twitch.tv/freakinghulk"})
+  client.user.setActivity(`Loading PSR Bot...`, {type: "STREAMING", url: "https://twitch.tv/freakinghulk"})
   setTimeout(() => {
     setInterval(() => {
       if (result == statuses[0]) {
@@ -32,10 +32,6 @@ client.on('ready', () => {
    
       if (result == statuses[1]) {
         client.user.setActivity(result, {type: "LISTENING"})
-      }
-   
-      if (result == statuses[2]) {
-        client.user.setActivity(result, {type: "PLAYING"})
       }
     }, 25000)
   }, 10000)
