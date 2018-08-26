@@ -1,7 +1,7 @@
 const discord = require('discord.js'),
 const client = new discord.Client(),
-config = require('./config.json'),
-prefix = ".",
+const config = require('./config.json'),
+var prefix = ".",
 
 
 // ===Loading commands===
