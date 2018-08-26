@@ -6,7 +6,7 @@ prefix = ".",
 
 // ===Loading commands===
 
-bot.commands = new discord.Collection()
+client.commands = new discord.Collection()
 
 require('fs').readdir("./commands/", (err, files) => {
   console.log("Loading commands...");
@@ -18,32 +18,32 @@ require('fs').readdir("./commands/", (err, files) => {
 
 // ===Done Loading commands===
 
-bot.on('guildMemberAdd', (member) => require('./events/guildMemberAdd.js')(bot, member))
+client.on('guildMemberAdd', (member) => require('./events/guildMemberAdd.js')(bot, member))
 
-bot.on('ready', () => {
+client.on('ready', () => {
   var statuses = ["over Himiachi Base", "bot moosic", "bot gamez"]
   var result = statuses[Math.floor(Math.random() * statuses.length)]
-  bot.user.setActivity(`Loading Himiachi...`, {type: "STREAMING", url: "https://twitch.tv/freakinghulk"})
+  client.user.setActivity(`Loading Himiachi...`, {type: "STREAMING", url: "https://twitch.tv/freakinghulk"})
   setTimeout(() => {
     setInterval(() => {
       if (result == statuses[0]) {
-        bot.user.setActivity(result, {type: "WATCHING"})
+        client.user.setActivity(result, {type: "WATCHING"})
       }
    
       if (result == statuses[1]) {
-        bot.user.setActivity(result, {type: "LISTENING"})
+        client.user.setActivity(result, {type: "LISTENING"})
       }
    
       if (result == statuses[2]) {
-        bot.user.setActivity(result, {type: "PLAYING"})
+        client.user.setActivity(result, {type: "PLAYING"})
       }
     }, 25000)
   }, 10000)
-    console.log("Himiachi ready!")
+    console.log(`${client.user.tag} ready!`)
 })
  // ==Rotator==
 
-bot.on('message', message => {
+client.on('message', message => {
   let mArray = message.content.split(" ")
   let args = mArray.slice(1)
   let cmd = bot.commands.get(mArray[0].slice(prefix.length))
@@ -53,7 +53,7 @@ bot.on('message', message => {
   
   if (cmd) {
     if (config.ubl.includes(message.author.id)) return;
-    cmd.run(bot, message, args, discord)
+    cmd.run(client, message, args, discord)
     console.log(`${message.author.username} used the ${message.content.split(" ")[0]} command.`)
   }
 })
