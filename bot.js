@@ -2,7 +2,7 @@ const discord = require('discord.js'),
 bot = new discord.Client(),
 config = require('./config.json'),
 prefix = ".",
-bot.login(process.env.token);
+
 
 // ===Loading commands===
 
@@ -57,3 +57,6 @@ bot.on('message', message => {
     console.log(`${message.author.username} used the ${message.content.split(" ")[0]} command.`)
   }
 })
+
+
+client.login(process.env.token)
