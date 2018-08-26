@@ -6,7 +6,7 @@ var prefix = ".",
 
 // ===Loading commands===
 
-client.commands = new discord.Collection()
+var client.commands = new discord.Collection()
 
 require('fs').readdir("./commands/", (err, files) => {
   console.log("Loading commands...");
