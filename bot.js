@@ -2,7 +2,6 @@ const discord = require('discord.js'),
 bot = new discord.Client(),
 config = require('./config.json'),
 prefix = ".",
-{baselogger} = require('./logger.js')
 bot.login(process.env.token);
 
 // ===Loading commands===
